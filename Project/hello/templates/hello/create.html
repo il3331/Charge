@@ -1,0 +1,23 @@
+{% extends 'hello/base.html' %}
+{%  block title %}
+Создать запись
+{% endblock %}
+
+{%  block content %}
+    <h1>Создать запись</h1>
+    <form method="get" >
+        {%  csrf_token %}
+        {{ form.id_charge }}<br>
+        {{ form.title }}<br>
+        {{ form.task }}<br>
+        {{ form.slot_number }}<br>
+        {{ form.car_title }}<br>
+        {{ form.battery_voltage }}<br>
+        {{ form.start_charge_time }}<br>
+        {{ form.status }}<br>
+        {{ form.charge_percent }}<br>
+        {{ form.end_charge_time }}<br>
+        <button type="submit" class="btn btn-success">Добавить</button>
+        <span>{{ error }} </span>
+    </form>
+{% endblock %}

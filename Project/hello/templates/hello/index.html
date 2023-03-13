@@ -1,0 +1,41 @@
+{% extends 'hello/base.html' %}
+{%  block title %}
+{{ title }}
+{% endblock %}
+{%  block content %}
+
+<h1>Главная страница</h1>
+<div style="float:left">
+<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Acd293d31b30a2158f34d16fd9cf7ac4d055f720abb6b8b01338905ee0f9660a7&amp;width=800&amp;height=600&amp;lang=ru_RU&amp;scroll=true"></script>
+</div>
+
+<div style="float:left">
+ {% if chagers %}
+    {% for el in chagers  %}
+        {% if forloop.last %}
+            <div class = "">
+                <h3>{{ el.title }}</h3>
+                <p>{{ el.task }}</p>
+                <p>Парковочное место № {{ el.slot_number }}</p>
+                <p>Модель машины на зарядке: {{ el.car_title }}</p>
+                   {% if el.status == 1 %}
+                         <p>Статус: Место для зарядки занято</p>
+                   {% elif el.status == 2 %}
+                         <p>Статус: Место для зарядки свободно</p>
+                   {% endif %}
+                <p>Продолжительность зарядки авто: {{ el.start_charge_time }} мин.</p>
+                <p>Процент зярадяки: {{ el.charge_percent }}%</p>
+                <p>Время до окончания зарядки : {{ el.end_charge_time }} ч.</p>
+                <p>Информация обновлена : {{ el.date }}</p>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% else %}
+    <p>Нет записей!</p>
+{% endif %}
+
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'hello/base.html' %}
+{%  block title %}
+{{ title }}
+{% endblock %}
+{%  block content %}
+<h1>Главная страница</h1>
+{% if chagers %}
+    {% for el in chagers  %}
+        <div class = "alert alert-warning mt-2">
+            <h3>{{ el.title }}</h3>
+            <p>{{ el.task }}</p>
+            <p>{{ el }}</p>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>Нет записей!</p>
+{% endif %}
+{% endblock %}
